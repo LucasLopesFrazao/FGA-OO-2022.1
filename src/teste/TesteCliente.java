@@ -1,3 +1,5 @@
+package teste;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,10 +9,15 @@ import org.junit.jupiter.api.Test;
 import controle.ControleCliente;
 import modelo.Cliente;
 
-class Teste {
-
-	// Testando controleCliente
+class TesteCliente {
 	ControleCliente controleCliente = new ControleCliente();
+	
+	@Test
+	void ultimoCodigoCadastrado() {
+		Integer ultimoId = controleCliente.ultimoCodigoCadastrado();
+		assertEquals(10, ultimoId);
+	}
+	
 	@Test
 	void adicionarCliente() {
 		controleCliente.adicionarCliente(new Cliente(11, "Yasmin Nicole Sebastiana", "yasmin_farias@papayacomunicacao.com.br", "866.322.195-94", "49008-321",
@@ -26,17 +33,17 @@ class Teste {
 	}
 	
 	@Test
-	void validarUmCPF() {
+	void validarUmCPFInvalido() {
 		assertFalse(controleCliente.validarCPF("356.440.458-13"));
 	}
 	
 	@Test
-	void validarEmail() {
+	void validarEmailInvalido() {
 		assertFalse(controleCliente.validarEmail("luc@s@gmail.com"));
 	}
 
 	@Test
-	void cpfNoSistema() {
+	void verificarCPFNoSistema() {
 		assertTrue(controleCliente.cpfNoSistema("428.047.520-20"));
 	}
 }

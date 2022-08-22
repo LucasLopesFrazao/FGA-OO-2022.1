@@ -26,7 +26,7 @@ public class ControleProduto {
 		produtos.add(new Produto(1, 8549.00, 100, "Galaxy S22 Ultra 5G Preto 256GB"));
 		produtos.add(new Produto(2, 11519.00, 50, "Galaxy Z Fold3 5G Preto 512GB"));
 		produtos.add(new Produto(3, 2699.00, 25, "Galaxy S21 FE 5G 128GB"));
-		produtos.add(new Produto(4, 3319.00, 75, "iPhone 11 Apple (64GB) Preto "));
+		produtos.add(new Produto(4, 3319.00, 75, "iPhone 11 Apple (64GB) Preto"));
 		produtos.add(new Produto(5, 9176.00, 15, "Iphone 13 PRO"));
 		
 		//MÓVEIS

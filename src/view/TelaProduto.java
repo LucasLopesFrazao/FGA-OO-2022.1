@@ -424,7 +424,7 @@ public class TelaProduto extends JDialog {
 	        DefaultTableModel tabelaProdutos = (DefaultTableModel) controleProdutoTblProdutos.getModel(); // MODELO DA TABELA
 	        
 	        // PESQUISANDO NO BANCO DE DADOS E INSERINDO EM VARIAVEIS
-	        Produto p = controleProduto.pesquisarProduto(controleProdutoInputNome.getText());
+	        Produto p = controleProduto.pesquisarProduto(controleProdutoInputPesquisarNome.getText());
 	        // PEGANDO DADOS
 	        Integer codigo = p.getId(); 
 	        String nome = p.getNome();
