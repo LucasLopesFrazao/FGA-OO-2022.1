@@ -29,6 +29,17 @@ import application.Main;
 import controle.ControleProduto;
 import modelo.Produto;
 
+/**
+ * Classe responsável por gerar todo o frontend relacionado com o {@link Produto} e interagir com o {@link ControleProduto}.
+ * A classe é responsável pelo CRUD de {@link Produto}
+ * Existem 2 TabbedPane, um responsável pela listagem/pesquisa/exclusão de produtos e o outro pelo cadastramento de novos produtos ou editar um produto já existente.
+ * 
+ * @see Produto
+ * @see ControleProduto
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 public class TelaProduto extends JDialog {
 	ControleProduto controleProduto = Main.controleProduto;
 
@@ -58,6 +69,9 @@ public class TelaProduto extends JDialog {
     private JLabel TextoPreco = new JLabel();
     private JScrollPane jScrollPane1 = new JScrollPane();
 	
+    /**
+     * Construtor padrão da classe, contém todo o desenho do frontend do projeto relacionado ao CRUD de {@link Produto}
+     */
     public TelaProduto(Frame parent, boolean modal) {
         super(parent, modal);
         controleProdutoInputCod.setText(String.valueOf(controleProduto.ultimoCodigoCadastrado()+1));
@@ -300,7 +314,10 @@ public class TelaProduto extends JDialog {
         controleProdutoBtnListarTodosClique(null);
     }                       
 
-    private void controleProdutoBtnApagarCamposCliente(ActionEvent evento) {                                                               
+    /**
+     * Botão responsável por apagar todos os inputs e setar o input do codigo para o ultimo codigo cadastrado no {@link ControleProduto} + 1
+     */
+    public void controleProdutoBtnApagarCamposCliente(ActionEvent evento) {                                                               
         // APAGANDO INPUTS
     	controleProdutoInputNome.setText("");
     	controleProdutoInputEstoque.setText("");
@@ -308,7 +325,11 @@ public class TelaProduto extends JDialog {
     	controleProdutoInputCod.setText(String.valueOf(controleProduto.ultimoCodigoCadastrado()+1));
     }                                                              
 
-    private void controleProdutoBtnEditarClique(ActionEvent evento) {                                                         
+    /**
+     * Botão responsável por editar um {@link Produto}.
+     * Pega os dados de uma linha e joga para o TabbedPane de salvar um novo produto, porém, se o id já existir, ele apenas edita no {@link ControleProduto}.
+     */
+    public void controleProdutoBtnEditarClique(ActionEvent evento) {                                                         
         int linhaSelecionada = controleProdutoTblProdutos.getSelectedRow(); // PEGANDO LINHA SELECIONADA
      	
      	if(linhaSelecionada == -1) { // SE NÃO TIVER NENHUMA LINHA SELECIONADA
@@ -331,7 +352,11 @@ public class TelaProduto extends JDialog {
      	}
     }                                                        
 
-    private void controleProdutoBtnExcluirClique(ActionEvent evento) {                                                          
+    /**
+     * Botão responsável por excluir um {@link Produto}.
+     * Pega a linha selecionada e exclui o {@link Produto} respectivo no {@link ControleProduto}.
+     */
+    public void controleProdutoBtnExcluirClique(ActionEvent evento) {                                                          
         int linhaSelecionada = controleProdutoTblProdutos.getSelectedRow(); // PEGANDO LINHA SELECIONADA
         DefaultTableModel tabelaProdutos = (DefaultTableModel) controleProdutoTblProdutos.getModel(); // MODELO DA TABELA
     	
@@ -351,7 +376,11 @@ public class TelaProduto extends JDialog {
     	}
     }                                                                                                                 
 
-    private void controleProdutoBtnSalvarClique(ActionEvent evento) {  
+    /**
+     * Botão responsável por salvar um {@link Produto}.
+     * Verifica todos os inputs escritos e salva ou edita (Depende do id) o {@link Produto} no {@link ControleProduto}.
+     */
+    public void controleProdutoBtnSalvarClique(ActionEvent evento) {  
     	boolean precoValido = false;
     	boolean estoqueValido = false;
         // PEGANDO INFORMAÇÕES DOS CAMPOS
@@ -412,7 +441,11 @@ public class TelaProduto extends JDialog {
 			} 
     }                                                        
 
-    private void controleProdutoBtnPesquisarClique(ActionEvent evento) {                                                            
+    /**
+     * Botão responsável por pesquisar um {@link Produto}.
+     * Pesquisa um {@link Produto} no {@link ControleProduto} por meio de um nome digitado.
+     */
+    public void controleProdutoBtnPesquisarClique(ActionEvent evento) {                                                            
     	if(controleProdutoInputPesquisarNome.getText().equals("")) { // INPUT VAZIO
     		JOptionPane.showMessageDialog(this, "Digite um nome válido!", "Erro", JOptionPane.ERROR_MESSAGE);
     	}else {
@@ -444,7 +477,10 @@ public class TelaProduto extends JDialog {
     	}
     }                                                                                                                   
 
-    private void controleProdutoBtnListarTodosClique(ActionEvent evento) {                                                              
+    /**
+     * Botão responsável por listar todos os {@link Produto} que estão no {@link ControleProduto}.
+     */
+    public void controleProdutoBtnListarTodosClique(ActionEvent evento) {                                                              
         DefaultTableModel tabelaProdutos = (DefaultTableModel) controleProdutoTblProdutos.getModel(); // MODELO TABELA
     	List<Produto> todosProdutos = controleProduto.obterTodosProdutos(); // PEGANDO TODOS OS PRODUTOS DO BANCO DE DADOS
     	

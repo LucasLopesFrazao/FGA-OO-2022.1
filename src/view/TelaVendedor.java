@@ -29,6 +29,17 @@ import application.Main;
 import controle.ControleVendedor;
 import modelo.Vendedor;
 
+/**
+ * Classe responsável por gerar todo o frontend relacionado com {@link Vendedor} do projeto e interagir com o {@link ControleVendedor}.
+ * A classe é responsável pelo CRUD de {@link Vendedor}.
+ * Existem 2 TabbedPane, um responsável pela listagem/pesquisa/exclusão de vendedores e o outro pelo cadastramento de novos vendedores ou editar um vendedor já existente.
+ * 
+ * @see Vendedor
+ * @see ControleVendedor
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 public class TelaVendedor extends JDialog {
 	private static final long serialVersionUID = 1L;
 
@@ -58,6 +69,9 @@ public class TelaVendedor extends JDialog {
     private JLabel TextoEmail = new JLabel();
     private JScrollPane jScrollPane1 = new JScrollPane();
 
+    /**
+     * Construtor padrão da classe, contém todo o desenho do frontend do projeto relacionado ao CRUD de {@link Vendedor}
+     */
     public TelaVendedor(Frame parent, boolean modal) {
         super(parent, modal);
         // ATUALIZANDO O INPUT DO COD PARA O PROXIMO A SER CADASTRADO 
@@ -303,7 +317,10 @@ public class TelaVendedor extends JDialog {
         controleFuncionarioBtnListarTodosClique(null);
     }     
     
-    private void controleFuncionarioBtnApagarCamposClique(ActionEvent evento) {                                                                   
+    /**
+     * Botão responsável por apagar todos os inputs e setar o input do codigo para o ultimo codigo cadastrado no {@link ControleVendedor} + 1
+     */
+    public void controleFuncionarioBtnApagarCamposClique(ActionEvent evento) {                                                                   
     	// APAGANDO TODOS OS CAMPOS
         controleFuncionarioInputNome.setText("");
         controleFuncionarioInputEmail.setText("");
@@ -311,7 +328,11 @@ public class TelaVendedor extends JDialog {
 		controleFuncionarioInputCod.setText(String.valueOf(controleVendedor.ultimoCodigoCadastrado() + 1)); // ADICIONANDO PROXIMO ID A SER CADASTRADO NO INPUT CODIGO
     }                                                                  
 
-    private void controleFuncionarioBtnEditarActionPerformed(ActionEvent evento) {                                                             
+    /**
+     * Botão responsável por editar um {@link Vendedor}.
+     * Pega os dados de uma linha e joga para o TabbedPane de salvar um novo cliente, porém, se o id já existir, ele apenas edita no {@link ControleVendedor}
+     */
+    public void controleFuncionarioBtnEditarActionPerformed(ActionEvent evento) {                                                             
         int linhaSelecionada = controleFuncionarioTblFuncionarios.getSelectedRow(); // PEGANDO LINHA SELECIONADA DA TABELA
         
         // SE NÃO TIVER NENHUMA LINHA SELECIONADA
@@ -335,7 +356,11 @@ public class TelaVendedor extends JDialog {
      	}
     }                                                            
 
-    private void controleFuncionarioBtnExcluirClique(ActionEvent evento) {                                                              
+    /**
+     * Botão responsável por excluir um {@link Vendedor}
+     * Pega a linha selecionada e exclui o {@link Vendedor} respectivo no {@link ControleVendedor}
+     */
+    public void controleFuncionarioBtnExcluirClique(ActionEvent evento) {                                                              
         int linhaSelecionada = controleFuncionarioTblFuncionarios.getSelectedRow(); // PEGANDO LINHA SELECIONADA DA TABELA
         DefaultTableModel tabelaVendedores = (DefaultTableModel) controleFuncionarioTblFuncionarios.getModel(); // PEGANDO MODELO DA TABELA
         
@@ -356,7 +381,11 @@ public class TelaVendedor extends JDialog {
     	}
     }                                                                                                                       
 
-    private void controleFuncionarioBtnSalvarClique(ActionEvent evento) {                                                             
+    /**
+     * Botão responsável por salvar um {@link Vendedor}
+     * Verifica todos os inputs escritos e salva ou edita (Depende do id) o {@link Vendedor} no {@link ControleVendedor}
+     */
+    public void controleFuncionarioBtnSalvarClique(ActionEvent evento) {                                                             
     	//PEGANDO INFORMAÇÕES DIGITADAS NOS INPUTS
     	Integer cod = Integer.parseInt(controleFuncionarioInputCod.getText());
     	String nome = controleFuncionarioInputNome.getText();
@@ -400,7 +429,11 @@ public class TelaVendedor extends JDialog {
     	}
     }                                                            
 
-    private void controleFuncionarioBtnPesquisarClique(ActionEvent evento) {  
+    /**
+     * Botão responsável por pesquisar um {@link Vendedor}
+     * Pesquisa um {@link Vendedor} no {@link ControleVendedor} por meio de um nome digitado
+     */
+    public void controleFuncionarioBtnPesquisarClique(ActionEvent evento) {  
     	//CAMPO EM BRANCO
     	if(controleFuncionarioInputPesquisarNome.getText().equals("")) {
     		JOptionPane.showMessageDialog(this, "Digite um nome válido!");
@@ -432,7 +465,10 @@ public class TelaVendedor extends JDialog {
     	}
     }                                                                                                                          
 
-    private void controleFuncionarioBtnListarTodosClique(ActionEvent evento) {                                                                  
+    /**
+     * Botão responsável por listar todos os {@link Vendedor} que estão no {@link ControleVendedor}
+     */
+    public void controleFuncionarioBtnListarTodosClique(ActionEvent evento) {                                                                  
         DefaultTableModel tabelaVendedores = (DefaultTableModel) controleFuncionarioTblFuncionarios.getModel(); //MODELO DA TABELA 
     	List<Vendedor> todosVendedores = controleVendedor.obterTodosVendedores(); //PEGANDO TODOS OS VENDEDORES DO BANCO DE DADOS
     	

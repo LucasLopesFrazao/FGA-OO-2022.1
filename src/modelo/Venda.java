@@ -1,13 +1,16 @@
-/**
- * Classe utilizada no controleVenda, é apenas uma model de uma venda.
- * @version 1.0.0
- */
 package modelo;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Classe utilizada no controleVenda, é apenas uma classe para modelar uma venda.
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 public class Venda {
 
 	//ATRIBUTOS

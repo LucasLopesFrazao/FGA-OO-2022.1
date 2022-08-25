@@ -1,9 +1,13 @@
+package modelo;
+
 /**
- * Classe utilizada no controleCliente, é apenas uma model de um cliente.
- * @version 1.0.0
+ * Classe utilizada no controleCliente, é apenas uma classe para modelar um cliente.
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
  */
 
-package modelo;
 public class Cliente extends PessoaAbstrata{
 	
 	private String cpf;

@@ -9,17 +9,22 @@ import modelo.Vendedor;
 
 /**
  * A classe <b>ControleVendedor</b> define uma relação com a classe Vendedor (model) com a TelaVendedor (view). 
+ * 
  * <p>
  * Essa classe é responsável por gerenciar a lista de vendedor junto com os métodos necessários
  * </p>
+ * 
+ * @see Vendedor
+ * @since 1.0
  * @version 1.0
+ * @author Lucas L. Frazão - 211031771
  */
 public class ControleVendedor {
 	
 	private List<Vendedor> vendedores = new ArrayList<Vendedor>();
 	
 	/**
-	 * O construtor default da classe
+	 * O construtor default da classe, onde entramos com dados mocados na lista.
 	 */
 	public ControleVendedor() {
 		vendedores.add(new Vendedor(1, "Vicente Paulo Tomás Nunes", "marcelo78@hersa.com.br", "Celulares"));
@@ -30,33 +35,36 @@ public class ControleVendedor {
 	}
 	
 	/**
-	 * Esse método retorna o ultimo id do cliente adicionado na lista
-	 * @return Ultimo id do cliente da lista
+	 * Esse método retorna o ultimo id do cliente adicionado na lista.
+	 * @return Ultimo id do cliente da lista.
 	 */
 	public Integer ultimoCodigoCadastrado() {
 		return vendedores.get((vendedores.size() - 1)).getId();
 	}
 	
 	/**
-	 * Esse método adiociona um vendedor na lista
-	 * @param vendedor Vendedor a ser adicionado 
+	 * Esse método adiociona um vendedor na lista.
+	 * @param vendedor Vendedor a ser adicionado.
+	 * @see Vendedor
 	 */
 	public void adicionarVendedor(Vendedor vendedor) {
 		vendedores.add(vendedor);
 	}
 	
 	/**
-	 * Esse método obtêm a lista de vendedores
-	 * @return Retorna uma Lista de Vendedor
+	 * Esse método obtêm a lista de vendedores.
+	 * @return Retorna uma Lista de Vendedor.
+	 * @see Vendedor
 	 */
 	public List<Vendedor> obterTodosVendedores(){
 		return vendedores;
 	}
 
 	/**
-	 * Esse método pesquisa um vendedor na lista
-	 * @param nome Nome a ser procurado na lista 
-	 * @return Retorna um Vendedor
+	 * Esse método pesquisa um vendedor na lista.
+	 * @param nome Nome a ser procurado na lista.
+	 * @return Retorna um Vendedor.
+	 * @see Vendedor
 	 */
 	public Vendedor pesquisarPorNome(String nome) {
 		if(nome.equals("")) {
@@ -71,9 +79,9 @@ public class ControleVendedor {
 	}
 	
 	/**
-	 * Esse método checa se um determinado id existe na lista 
-	 * @param id Id a ser checado
-	 * @return Retorna um boolean informando se o id existe ou não na lista
+	 * Esse método checa se um determinado id existe na lista.
+	 * @param id Id a ser checado.
+	 * @return Retorna um boolean informando se o id existe ou não na lista.
 	 */
 	public boolean checarId(Integer id) {
 		for(Vendedor v: vendedores) {
@@ -85,8 +93,9 @@ public class ControleVendedor {
 	}
 	
 	/**
-	 * Este método recebe um vendedor e reescreve os dados de um já existente
-	 * @param vendedor Novo vendedor com os dados a serem reescritos
+	 * Este método recebe um vendedor e reescreve os dados de um já existente.
+	 * @param vendedor Novo vendedor com os dados a serem reescritos.
+	 * @see Vendedor
 	 */
 	public void editarVendedor(Vendedor vendedor) {
 		for(Vendedor v: vendedores) {

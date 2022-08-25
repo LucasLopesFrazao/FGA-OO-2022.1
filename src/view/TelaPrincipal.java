@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.EventQueue;
+import java.awt.MenuBar;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,15 @@ import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-
+/**
+ * Classe responsável por gerar todo o frontend relacionado com a tela principal e interagit com a {@link TelaCliente}, {@link TelaConsultarVenda}, {@link TelaProduto}, {@link TelaRealizarVenda}, {@link TelaVendedor}, {@link TelaVizualizarVendaUnica}.
+ * A classe é responsável por ser o menu principal.
+ * Existe 1 {@link MenuBar} contendo todas as telas
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 public class TelaPrincipal extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
 	
@@ -37,6 +46,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private JMenu principalMenuVendas = new JMenu();
 	private ImageIcon imagemPrincipal = new ImageIcon(getClass().getResource("/Imagens/fundo2.png"));
 	
+    /**
+     * Construtor padrão da classe, contém todo o desenho do frontend do projeto relacionado ao menu
+     */
     public TelaPrincipal() {
     	//CONFIGURAÇÕES INICIAIS
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -127,43 +139,64 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pack();
     }
-                       
-    private void menuControleClientesClique(ActionEvent evento) {                                                     
+             
+    /**
+     * Botão para entrar na {@link TelaCliente}
+     */
+    public void menuControleClientesClique(ActionEvent evento) {                                                     
         TelaCliente controleCliente = new TelaCliente(this, true);
         controleCliente.pack();
         controleCliente.setVisible(true);
     }                                                                                                       
 
-    private void menuControleFuncionariosClique(ActionEvent evento) {                                                         
+    /**
+     * Botão para entrar na {@link TelaVendedor}
+     */
+    public void menuControleFuncionariosClique(ActionEvent evento) {                                                         
         TelaVendedor controleFuncionario = new TelaVendedor(this, true);
         controleFuncionario.pack();
         controleFuncionario.setVisible(true);
     }                                                        
 
-    private void menuControleProdutosClique(ActionEvent evento) {                                                     
+    /**
+     * Botão para entrar na {@link TelaProduto}
+     */
+    public void menuControleProdutosClique(ActionEvent evento) {                                                     
         TelaProduto controleProduto = new TelaProduto(this, true);
         controleProduto.pack();
         controleProduto.setVisible(true);
     }                                                    
 
-    private void menuVendaRealizarVendasClique(ActionEvent evento) {                                                        
+    /**
+     * Botão para entrar na {@link TelaRealizarVenda}
+     */
+    public void menuVendaRealizarVendasClique(ActionEvent evento) {                                                        
         TelaRealizarVenda realizarVenda = new TelaRealizarVenda(this, true);
         realizarVenda.pack();
         realizarVenda.setVisible(true);
     }                                                       
 
-    private void menuVendaConsultarVendasClique(ActionEvent evento) {                                                         
+    /**
+     * Botão para entrar na {@link TelaConsultarVenda}
+     */
+    public void menuVendaConsultarVendasClique(ActionEvent evento) {                                                         
         TelaConsultarVenda consultarVenda = new TelaConsultarVenda(this, true);
         consultarVenda.pack();
         consultarVenda.setVisible(true);
     }                                                        
 
-    private void menuVendaConsultaIdClique(ActionEvent evento) {                                                    
+    /**
+     * Botão para entrar na {@link TelaVizualizarVendaUnica}
+     */
+    public void menuVendaConsultaIdClique(ActionEvent evento) {                                                    
     	TelaVizualizarVendaUnica consultarVendaUnica = new TelaVizualizarVendaUnica(this, true);
     	consultarVendaUnica.pack();
     	consultarVendaUnica.setVisible(true);
     }                                                   
 
+    /**
+     * Como essa é a tela principal, ela precisa ter um main para ser chamado e assim poder chamar todas as outras telas.
+     */
     public static void main(String args[]) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {

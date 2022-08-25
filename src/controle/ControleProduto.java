@@ -9,16 +9,21 @@ import modelo.Produto;
 
 /**
  * A classe <b>ControleProduto</b> define uma relação com a classe Produto (model) com a TelaProduto (view). 
+ * 
  * <p>
  * Essa classe é responsável por gerenciar a lista de produto junto com os métodos necessários
  * </p>
+ * 
+ * @see Produto
  * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
  */
 public class ControleProduto {
 	List<Produto> produtos = new ArrayList<>();
 	
 	/**
-	 * O construtor default da classe
+	 * O construtor default da classe, onde entramos com dados mocados na lista.
 	 */
 	public ControleProduto() {
 		
@@ -59,30 +64,30 @@ public class ControleProduto {
 	}
 	
 	/**
-	 * Esse método retorna o ultimo id do produto adicionado na lista
-	 * @return Ultimo id do cliente da lista
+	 * Esse método retorna o ultimo id do produto adicionado na lista.
+	 * @return Ultimo id do cliente da lista.
 	 */
 	public Integer ultimoCodigoCadastrado() {
 		return produtos.get((produtos.size() - 1)).getId();
 	}
 	
 	/**
-	 * Esse método obtêm a lista de produtos
-	 * @return Retorna uma Lista de Produto
+	 * Esse método obtêm a lista de produtos.
+	 * @return Retorna uma Lista de Produto.
+	 * @see Produto
 	 */
 	public List<Produto> obterTodosProdutos(){
 		return produtos;
 	}
 	
 	/**
-	 * Esse método checa se um determinado id existe na lista 
-	 * @param id Id a ser checado
-	 * @return Retorna um boolean informando se o id existe ou não na lista
+	 * Esse método checa se um determinado id existe na lista. 
+	 * @param id Id a ser checado.
+	 * @return Retorna um boolean informando se o id existe ou não na lista.
 	 */
 	public boolean checarId(Integer id) {
 		for(Produto p: produtos) {
 			if(p.getId() == id) {
-				System.out.println("true");
 				return true;
 			}
 		}
@@ -90,8 +95,9 @@ public class ControleProduto {
 	}
 	
 	/**
-	 * Este método recebe um produto e reescreve os dados de um já existente
-	 * @param produto Novo produto com os dados a serem reescritos
+	 * Este método recebe um produto e reescreve os dados de um já existente.
+	 * @param produto Novo produto com os dados a serem reescritos.
+	 * @see Produto
 	 */
 	public void editarProduto(Produto produto) {
 		for(Produto p: produtos) {
@@ -105,8 +111,9 @@ public class ControleProduto {
 	}
 	
 	/**
-	 * Esse método adiociona um produto na lista
-	 * @param produto Produto a ser adicionado 
+	 * Esse método adiociona um produto na lista.
+	 * @param produto Produto a ser adicionado.
+	 * @see Produto
 	 */
 	public void adicionarProduto(Produto produto) {
 		produtos.add(produto);
@@ -114,9 +121,10 @@ public class ControleProduto {
 	
 	
 	/**
-	 * Esse método pesquisa um produto na lista pelo nome
-	 * @param nome Nome a ser procurado na lista 
-	 * @return Retorna um Produto
+	 * Esse método pesquisa um produto na lista pelo nome.
+	 * @param nome Nome a ser procurado na lista .
+	 * @return Retorna um Produto.
+	 * @see Produto
 	 */
 	public Produto pesquisarProduto(String nome) {
 		for(Produto p: produtos) {
@@ -128,9 +136,10 @@ public class ControleProduto {
 	}
 	
 	/**
-	 * Esse método pesquisa um produto na lista pelo id
-	 * @param id Id a ser procurado na lista 
-	 * @return Retorna um Produto
+	 * Esse método pesquisa um produto na lista pelo id.
+	 * @param id Id a ser procurado na lista .
+	 * @return Retorna um Produto.
+	 * @see Produto
 	 */
 	public Produto pesquisarProdutoId(Integer id) {
 		for(Produto p: produtos) {
@@ -142,8 +151,8 @@ public class ControleProduto {
 	}
 	
 	/**
-	 * Esse método exclui um produto
-	 * @param id id do produto a ser excluido 
+	 * Esse método exclui um produto..
+	 * @param id id do produto a ser excluido.
 	 */
 	public void excluirProduto(Integer id) {
 		int loop = 0;
@@ -157,10 +166,10 @@ public class ControleProduto {
 	}
 	
 	/**
-	 * Este método diminui o estoque de um produto na lista
-	 * @param id Id do produto a ter o estoque diminuido
-	 * @param qtd Quantidade a ser diminuida do estoque
-	 * @throws EstoqueException Quantidade a ser retirada deixa o produto com menos de 0 unidades
+	 * Este método diminui o estoque de um produto na lista.
+	 * @param id Id do produto a ter o estoque diminuido.
+	 * @param qtd Quantidade a ser diminuida do estoque.
+	 * @throws EstoqueException Quantidade a ser retirada deixa o produto com menos de 0 unidades.
 	 */
 	public void diminuirEstoque(Integer id, Integer qtd) throws EstoqueException {
 		for(Produto p: produtos) {
@@ -175,9 +184,9 @@ public class ControleProduto {
 	}
 	
 	/**
-	 * Este método aumenta o estoque de um produto na lista
-	 * @param id Id do produto a ter o estoque aumentado
-	 * @param qtd Quantidade a ser aumentada do estoque
+	 * Este método aumenta o estoque de um produto na lista.
+	 * @param id Id do produto a ter o estoque aumentado.
+	 * @param qtd Quantidade a ser aumentada do estoque.
 	 */
 	public void aumentarEstoque(Integer id, Integer qtd){
 		for(Produto p: produtos) {
@@ -188,10 +197,10 @@ public class ControleProduto {
 	}
 	
 	/**
-	 * Este método verifica se um dado id existe na lista
-	 * @param id Id a ser checado -
-	 * @return Retorna um boolean informando se o id existe ou não
-	 * @throws IdProdutoException Não exista um produto com o id
+	 * Este método verifica se um dado id existe na lista.
+	 * @param id Id a ser checado.
+	 * @return Retorna um boolean informando se o id existe ou não.
+	 * @throws IdProdutoException Não exista um produto com o id.
 	 */
 	public boolean checarIdNoSistema(Integer id) throws IdProdutoException {
 		for(Produto p: produtos) {

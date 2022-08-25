@@ -1,22 +1,19 @@
-/**
- * Classe abstrata para auxiliar a classe Cliente e classe Vendedor.
- * @version 1.0.0
- */
 package modelo;
+
+/**
+ * Classe abstrata para auxiliar a criação da classe Cliente e classe Vendedor.
+ *
+ * @see Cliente
+ * @see Vendedor 
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 
 public abstract class PessoaAbstrata {
 	
-	/**
-	 * O atributo id é utilizado para conseguir identificar uma pessoa
-	 */
 	private Integer id;
-	/**
-	 * O atributo nome é utilizado para nomear uma pessoa
-	 */
 	private String nome;
-	/**
-	 * O atributo email é utilizado para uma pessoa ter um email
-	 */
 	private String email;
 	
 	// GETTERS E SETTERS

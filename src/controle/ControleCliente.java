@@ -10,16 +10,21 @@ import modelo.Cliente;
 
 /**
  * A classe <b>ControleCliente</b> define uma relação com a classe Cliente (model) com a TelaCliente (view). 
+ * 
  * <p>
- * Essa classe é responsável por gerenciar a lista de cliente junto com os métodos necessários
+ * Essa classe é responsável por gerenciar a lista de cliente junto com os métodos necessários.
  * </p>
+ *  
+ * @see Cliente
  * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
  */
 public class ControleCliente {
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 	
 	/**
-	 * O construtor default da classe 
+	 * O construtor default da classe, onde entramos com dados mocados na lista. 
 	 */
 	public ControleCliente() {
 		clientes.add(new Cliente(1, "Marcelo Otávio Assis", "marcelo78@hersa.com.br", "264.162.494-05", "41306-065",
@@ -54,7 +59,7 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * Esse método retorna o ultimo id do cliente adicionado na lista
+	 * Esse método retorna o último id do cliente adicionado na lista.
 	 * @return Ultimo id do cliente da lista
 	 */
 	public Integer ultimoCodigoCadastrado() {		
@@ -62,9 +67,10 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * Esse método pesquisa um cliente na lista
-	 * @param cpf CPF a ser procurado na lista 
-	 * @return Retorna um Cliente
+	 * Esse método pesquisa um cliente na lista.
+	 * @param cpf CPF a ser procurado na lista. 
+	 * @return Retorna um Cliente.
+	 * @see Cliente
 	 */
 	public Cliente pesquisarClientePorCPF(String cpf) {
 		Cliente cliente = new Cliente();
@@ -77,8 +83,8 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * Esse método exclui um cliente
-	 * @param cpf CPF do cliente a ser excluido 
+	 * Esse método exclui um cliente.
+	 * @param cpf CPF do cliente a ser excluido .
 	 */
 	public void excluirCliente(String cpf) {
 		int loop = 0;
@@ -92,25 +98,27 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * Esse método adiociona um cliente na lista
-	 * @param cliente Cliente a ser adicionado 
+	 * Esse método adiociona um cliente na lista.
+	 * @param cliente Cliente a ser adicionado.
+	 * @see Cliente
 	 */
 	public void adicionarCliente(Cliente cliente) {
 		clientes.add(cliente);
 	}
 	
 	/**
-	 * Esse método obtêm a lista de clientes
+	 * Esse método obtêm a lista de clientes.
 	 * @return Retorna uma Lista de Cliente
+	 * @see Cliente
 	 */
 	public List<Cliente> obterTodosClientes(){
 		return clientes;
 	}
 	
 	/**
-	 * Esse método checa se um determinado id existe na lista 
-	 * @param id Id a ser checado
-	 * @return Retorna um boolean informando se o id existe ou não na lista
+	 * Esse método checa se um determinado id existe na lista.
+	 * @param id Id a ser checado.
+	 * @return Retorna um boolean informando se o id existe ou não na lista.
 	 */
 	public boolean checarId(Integer id) {
 		for(Cliente c: clientes) {
@@ -122,8 +130,9 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * Este método recebe um cliente e reescreve os dados de um já existente
-	 * @param cliente Novo cliente com os dados a serem reescritos
+	 * Este método recebe um cliente e reescreve os dados de um já existente.
+	 * @param cliente Novo cliente com os dados a serem reescritos.
+	 * @see Cliente
 	 */
 	public void editarCliente(Cliente cliente) {
 		for(Cliente c: clientes) {
@@ -144,9 +153,9 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * Este método válida um CPF
-	 * @param CPF - CPF a ser válidado
-	 * @return Retorna um boolean informando se o cpf é válido ou não
+	 * Este método válida um CPF.
+	 * @param CPF CPF a ser válidado.
+	 * @return Retorna um boolean informando se o cpf é válido ou não.
 	 */
 	public boolean validarCPF(String CPF) {
 		CPF = CPF.replace("-", "");
@@ -207,9 +216,9 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * Este método válida um e-mail por meio do regex
-	 * @param email E-mail a ser válido
-	 * @return Retorna um boolean informando se o e-mail é válio ou não
+	 * Este método válida um e-mail por meio do regex.
+	 * @param email E-mail a ser válido.
+	 * @return Retorna um boolean informando se o e-mail é válido ou não
 	 */
 	public boolean validarEmail(String email) {
 	    boolean isEmailIdValid = false;
@@ -225,9 +234,9 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * Este método verifica se um dado CPF existe na lista
-	 * @param cpf CPF a ser verificado
-	 * @return Retorna um boolean informando se o cpf existe ou não
+	 * Este método verifica se um dado CPF existe na lista.
+	 * @param cpf CPF a ser verificado.
+	 * @return Retorna um boolean informando se o cpf existe ou não.
 	 */
 	public boolean cpfNoSistema(String cpf) {
 		for(Cliente c: clientes) {

@@ -27,6 +27,17 @@ import exceptions.CampoEmBrancoException;
 import modelo.Pedido;
 import modelo.Venda;
 
+/**
+ * Classe responsável por gerar todo o frontend relacionado com a consulta de uma única{@link Venda} e interagir com o {@link ControleVenda}.
+ * A classe é responsável pela pesquisa de uma {@link Venda} com todos os detalhes dela.
+ * Existe 1 input de código que é validado e um botão para pesquisar esse código
+ * 
+ * @see Venda
+ * @see ControleVenda
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 public class TelaVizualizarVendaUnica extends JDialog {
 	ControleVenda controleVenda = Main.controleVenda;
 
@@ -46,6 +57,9 @@ public class TelaVizualizarVendaUnica extends JDialog {
     private JLabel TextoTabelaProduto = new JLabel();
     private JScrollPane jScrollPane1 = new JScrollPane();
 
+    /**
+     * Construtor padrão da classe, contém todo o desenho do frontend do projeto relacionado a consulta de uma {@link Venda} exclusiva.
+     */
     public TelaVizualizarVendaUnica(Frame parent, boolean modal) {
         super(parent, modal);
         
@@ -178,7 +192,10 @@ public class TelaVizualizarVendaUnica extends JDialog {
         );
     }                        
 
-    private void VendaUnicaBtnPesquisarClique(ActionEvent evento) {   
+    /**
+     * Botão responsável por pesquisar uma venda por meio de um id no {@link ControleVenda} e mostrar os dados do cliente e vendedor, junto com o carrinho de compras, também seta um input com o total da venda.
+     */
+    public void VendaUnicaBtnPesquisarClique(ActionEvent evento) {   
     	try {
     		//MODELO DA TABELA
             DefaultTableModel tabelaPedidos = (DefaultTableModel) VendaUnicaTblProdutos.getModel();
@@ -200,8 +217,9 @@ public class TelaVizualizarVendaUnica extends JDialog {
                    ((DefaultTableModel) VendaUnicaTblProdutos.getModel()).setRowCount(0);  
             }
             for(Pedido p: vendaConsultada.getCarrinho()) {
-            	String preco = String.format("%.2f", p.getProduto().getPreco());
+            	String preco = String.format("%.2f", p.getPrecoAnterior());
             	String totalFormatado = String.format("%.2f", p.getPrecoTotal());
+            	
             	Object[] novoItem = new Object[] {
             			p.getProduto().getId(),
             			p.getProduto().getNome(),

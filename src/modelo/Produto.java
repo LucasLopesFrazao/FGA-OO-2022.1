@@ -1,8 +1,12 @@
-/**
- * Classe utilizada no controleProduto, é apenas uma model de um produto.
- * @version 1.0.0
- */
 package modelo;
+
+/**
+ * Classe utilizada no controleProduto, é apenas uma classe pra modelar um produto.
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 
 public class Produto {
 	

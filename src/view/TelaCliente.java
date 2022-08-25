@@ -34,8 +34,19 @@ import application.Main;
 import controle.ControleCliente;
 import modelo.Cliente;
 
+/**
+ * Classe responsável por gerar todo o frontend relacionado com {@link Cliente} do projeto e interagir com o {@link ControleCliente}.
+ * A classe é responsável pelo CRUD de {@link Cliente}.
+ * Existem 2 TabbedPane, um responsável pela listagem/pesquisa/exclusão de clientes e o outro pelo cadastramento de novos clientes ou editar um cliente já existente.
+ * 
+ * @see Cliente
+ * @see ControleCliente
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 public class TelaCliente extends JDialog {
-
+	
 	private static final long serialVersionUID = 1L;
 	
 	private JButton controleClienteBtnApagarCampos = new JButton();
@@ -77,7 +88,10 @@ public class TelaCliente extends JDialog {
     private JLabel TextoBairro = new JLabel();
     
     ControleCliente controleCliente = Main.controleCliente;
-
+    
+    /**
+     * Construtor padrão da classe, contém todo o desenho do frontend do projeto relacionado ao CRUD de {@link Cliente}
+     */
     public TelaCliente(Frame parent, boolean modal) {
         super(parent, modal);
         
@@ -428,7 +442,10 @@ public class TelaCliente extends JDialog {
         controleClienteBtnListarTodosClique(null);
     }                 
     
-    private void controleClienteBtnApagarCamposClique(ActionEvent evento) {                                                               
+    /**
+     * Botão responsável por apagar todos os inputs e setar o input do codigo para o ultimo codigo cadastrado no {@link ControleCliente} + 1
+     */
+    public void controleClienteBtnApagarCamposClique(ActionEvent evento) {                                                               
         // APAGANDO TODOS OS CAMPOS
     	controleClienteInputCod.setText(String.valueOf(controleCliente.ultimoCodigoCadastrado() + 1)); // SETANDO COD PARA O PROXIMO A SER CADASTRADO
     	controleClienteInputEmail.setText("");
@@ -440,9 +457,13 @@ public class TelaCliente extends JDialog {
     	controleClienteInputNumero.setText("");
     	controleClienteInputBairro.setText("");
     	controleClienteInputUF.setText("");
-    }                                                              
-
-    private void controleClienteBtnEditarClique(ActionEvent evento) {                                                         
+    }      
+    
+    /**
+     * Botão responsável por editar um {@link Cliente}.
+     * Pega os dados de uma linha e joga para o TabbedPane de salvar um novo cliente, porém, se o id já existir, ele apenas edita no {@link ControleCliente}
+     */
+    public void controleClienteBtnEditarClique(ActionEvent evento) {                                                         
         int linhaSelecionada = controleClienteTblClientes.getSelectedRow(); // PEGANDO LINHA SELECIONADA DA TABELA
     	
         // SE NÃO TIVER NENHUMA LINHA SELECIONADA
@@ -478,7 +499,11 @@ public class TelaCliente extends JDialog {
     	}
     }                                                        
 
-    private void controleClienteBtnExcluirClique(ActionEvent evento) {                                                          
+    /**
+     * Botão responsável por excluir um {@link Cliente}
+     * Pega a linha selecionada e exclui o {@link Cliente} respectivo no {@link ControleCliente}
+     */
+    public void controleClienteBtnExcluirClique(ActionEvent evento) {                                                          
         int linhaSelecionada = controleClienteTblClientes.getSelectedRow(); // PEGANDO LINHA SELECIONADA DA TABELA
         DefaultTableModel tabelaClientes = (DefaultTableModel) controleClienteTblClientes.getModel(); // PEGANDO MODELO DA TABELA
         
@@ -499,7 +524,11 @@ public class TelaCliente extends JDialog {
     	}
     }                                                                                                                
 
-    private void controleClienteBtnSalvarClique(ActionEvent evento) {        
+    /**
+     * Botão responsável por salvar um {@link Cliente}
+     * Verifica todos os inputs escritos e salva ou edita (Depende do id) o {@link Cliente} no {@link ControleCliente}
+     */
+    public void controleClienteBtnSalvarClique(ActionEvent evento) {        
     	//PEGANDO INFORMAÇÕES DIGITADAS NOS INPUTS
     	Integer novoCodigoCliente = Integer.parseInt(controleClienteInputCod.getText());
     	String nomeCliente = controleClienteInputNome.getText();
@@ -574,7 +603,11 @@ public class TelaCliente extends JDialog {
     	}
     }                                                        
 
-    private void controleClienteBtnPesquisarClique(ActionEvent evento) {
+    /**
+     * Botão responsável por pesquisar um {@link Cliente}
+     * Pesquisa um {@link Cliente} no {@link ControleCliente} por meio de um CPF digitado
+     */
+    public void controleClienteBtnPesquisarClique(ActionEvent evento) {
     	//VALIDANDO CPF
     	if(!controleCliente.validarCPF(controleClienteInputPesquisarCPF.getText())) {
     		JOptionPane.showMessageDialog(this, "CPF inválido!");
@@ -618,7 +651,10 @@ public class TelaCliente extends JDialog {
     	}
     }                                                                                                                 
 
-    private void controleClienteBtnListarTodosClique(ActionEvent evento) {                                                              
+    /**
+     * Botão responsável por listar todos os {@link Cliente} que estão no {@link ControleCliente}
+     */
+    public void controleClienteBtnListarTodosClique(ActionEvent evento) {                                                              
         DefaultTableModel tabelaClientes = (DefaultTableModel) controleClienteTblClientes.getModel(); // PEGANDO MODELO DA TABELA
     	List<Cliente> todosClientes = controleCliente.obterTodosClientes(); // PEGANDO TODOS OS CLIENTES DO BANCO DE DADOS
     	
@@ -660,7 +696,7 @@ public class TelaCliente extends JDialog {
     	}	
     }                                                                                                                   
 
-    private void controleClienteEstadosActionPerformed(ActionEvent evento) {                                                       
+    public void controleClienteEstadosActionPerformed(ActionEvent evento) {                                                       
 	        String estadoSelecionado = controleClienteEstados.getSelectedItem().toString();
 	        controleClienteInputUF.setText(estadoSelecionado);
     }                                                                    

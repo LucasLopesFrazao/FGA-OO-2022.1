@@ -39,6 +39,23 @@ import modelo.Produto;
 import modelo.Venda;
 import modelo.Vendedor;
 
+/**
+ * Classe responsável por gerar todo o frontend relacionado com a realização de uma {@link Venda} e interagir com o {@link ControleVenda}, {@link ControleProduto}, {@link ControleCliente}, {@link ControleVendedor}.
+ * A classe é responsável pela realização de uma nova {@link Venda}.
+ * Existe 1 botão para pesquisar um {@link Cliente}, 1 botão para pesquisar {@link Vendedor} e uma área para pesquisar/adicionar {@link Produto} em um carrinho e finalmente, 1 botão para concluir a venda ou cancelar.
+ * 
+ * @see Venda
+ * @see Produto
+ * @see Cliente
+ * @see Vendedor
+ * @see ControleVenda
+ * @see ControleCliente
+ * @see ControleVendedor
+ * @see ControleProduto
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 public class TelaRealizarVenda extends JDialog {
 	
     private JButton RealizarVendaBtnAdicionarCarrinho = new JButton();
@@ -80,6 +97,9 @@ public class TelaRealizarVenda extends JDialog {
     ControleProduto controleProduto = Main.controleProduto;
     ControleVenda controleVenda = Main.controleVenda;
 
+    /**
+     * Construtor padrão da classe, contém todo o desenho do frontend do projeto relacionado a realização de uma {@link Venda}.
+     */
     public TelaRealizarVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
 
@@ -398,17 +418,30 @@ public class TelaRealizarVenda extends JDialog {
         );        
     }
     
-    private void RealizarVendaBtnPesquisarClienteClique(ActionEvent evento) {                                                                 
+    /**
+     * Botão responsável por pesquisar um {@link Cliente}.
+     * Pesquisa um {@link Cliente} no {@link ControleCliente} por meio de um CPF digitado.
+     */
+    public void RealizarVendaBtnPesquisarClienteClique(ActionEvent evento) {                                                                 
         Cliente c = controleCliente.pesquisarClientePorCPF(RealizarVendaInputCPF.getText()); // PESQUISANDO CLIENTE POR CPF NO BANCO DE DADOS
         RealizarVendaInputNomeCliente.setText(c.getNome()); // ADICIONANDO AO INPUT
     }                                                                
 
-    private void RealizarVendaBtnPesquisarVendedorClique(ActionEvent evento) {                                                                  
+    /**
+     * Botão responsável por pesquisar um {@link Vendedor}.
+     * Pesquisa um {@link Vendedor} no {@link controleVenda} por meio de um nome digitado.
+     */
+    public void RealizarVendaBtnPesquisarVendedorClique(ActionEvent evento) {                                                                  
         Vendedor v = controleVendedor.pesquisarPorNome(RealizarVendaInputNomeVendedor.getText());  // PESQUISANDO VENDEDOR NO BANCO DE DADOS
         RealizarVendaInputNomeVendedor.setText(v.getNome()); // ADICIONANDO AO INPUT
     }                                                                                                                               
 
-    private void RealizarVendaBtnPesquisarProdutoClique(ActionEvent evento) {     
+    /**
+     * Botão responsável por pesquisar um {@link Produto}.
+     * Pesquisa um {@link Produto} no {@link ControleProduto} por meio de um codigo digitado.
+     * Adiciona o nome e o preço do produto pesquisado nos inputs.
+     */
+    public void RealizarVendaBtnPesquisarProdutoClique(ActionEvent evento) {     
     	try {
     		Produto p = controleProduto.pesquisarProdutoId(Integer.parseInt(RealizarVendaInputCodProduto.getText())); // PESQUISANDO PRODUTO POR ID NO BANCO DE DADOS
     		controleProduto.checarIdNoSistema(Integer.parseInt(RealizarVendaInputCodProduto.getText())); // CHECANDO SE INPUT DIGITADO EXISTE NO BANCO DE DADOS
@@ -419,7 +452,11 @@ public class TelaRealizarVenda extends JDialog {
     	}
     }                                                                
 
-    private void RealizarVendaBtnCancelarVendaClique(ActionEvent evento) {
+    /**
+     * Botão responsável por cancelar uma {@link Venda}
+     * Fecha a janela e volta o estoque dos produtos adicionados no carrinho.
+     */
+    public void RealizarVendaBtnCancelarVendaClique(ActionEvent evento) {
     	int totalRows = RealizarVendaTblCarrinho.getRowCount(); // PEGANDO QTD DE LINHAS DA TABELA
     	for(int i = 0; i < totalRows; i++) { // ADICIONANDO O ESTOQUE DE VOLTA
     		Integer cod = (Integer) RealizarVendaTblCarrinho.getModel().getValueAt(i, 0);
@@ -429,7 +466,11 @@ public class TelaRealizarVenda extends JDialog {
         dispose(); // FECHANDO O PROGRAMA
     }                                                             
 
-    private void RealizarVendaBtnRealizarVendaClique(ActionEvent evento) {                                                              
+    /**
+     * Botão responsável por realizar uma {@link Venda}.
+     * Valida todos os campos necessários, faz uma List de {@link Pedido} com todos os itens do carrinho e adiciona uma nova {@link Venda} no {@link ControleVenda}.
+     */
+    public void RealizarVendaBtnRealizarVendaClique(ActionEvent evento) {                                                              
         try {
         	int totalRows = RealizarVendaTblCarrinho.getRowCount(); // PEGANDO QTD DE LINHAS DA TABELA 
         	if(totalRows == 0) { // SE LINHAS FOREM ZERO
@@ -439,13 +480,15 @@ public class TelaRealizarVenda extends JDialog {
         	List<Pedido> pedidos = new ArrayList<>();
         	
         	for(int i = 0; i < totalRows; i++) { // GERANDO UM NOVO PEDIDO DE ACORDO COM A TABELA
+        		
         		Integer cod = (Integer) RealizarVendaTblCarrinho.getModel().getValueAt(i, 0);
         		String nome = (String) RealizarVendaTblCarrinho.getModel().getValueAt(i, 1);
         		Integer quantidade = (Integer) RealizarVendaTblCarrinho.getModel().getValueAt(i, 2);
         		Double preco = Double.parseDouble(String.valueOf(RealizarVendaTblCarrinho.getModel().getValueAt(i, 3)).replace(",", "."));
         		Double precoTotal = Double.parseDouble(String.valueOf(RealizarVendaTblCarrinho.getModel().getValueAt(i, 4)).replace(",", "."));
+        		Double precoAnterior = preco;
         		
-        		Pedido p = new Pedido(new Produto(cod, preco, nome), quantidade, precoTotal);
+        		Pedido p = new Pedido(new Produto(cod, preco, nome), quantidade, precoTotal, precoAnterior);
         		pedidos.add(p);
         	}
         	
@@ -471,7 +514,11 @@ public class TelaRealizarVenda extends JDialog {
 		}
     }                                                                                                                      
 
-    private void RealizarVendaBtnAdicionarCarrinhoClique(ActionEvent evento) {
+    /**
+     * Botão responsável por adicionar um {@link Produto} no carrinho.
+     * Primeiro pega a quantidade do produto pesquisado e valida o estoque, após isso, adiciona no carrinho
+     */
+    public void RealizarVendaBtnAdicionarCarrinhoClique(ActionEvent evento) {
     	try {
             DefaultTableModel tabelaCarrinho = (DefaultTableModel) RealizarVendaTblCarrinho.getModel(); //MODELO DA TABELA
             

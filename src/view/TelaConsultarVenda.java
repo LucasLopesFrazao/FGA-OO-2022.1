@@ -31,6 +31,17 @@ import application.Main;
 import controle.ControleVenda;
 import modelo.Venda;
 
+/**
+ * Classe responsável por gerar todo o frontend relacionado com a consulta de {@link Venda} e interagir com o {@link ControleVenda}.
+ * A classe é responsável pela listagem de {@link Venda}.
+ * Existe 2 inputs de datas e uma tabela, onde as vendas que aparecem são equivalentes ao intervalo das datas digitadas.
+ * 
+ * @see Venda
+ * @see ControleVenda
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 public class TelaConsultarVenda extends JDialog {
 	private JButton ConsultarVendaBtnPesquisar = new JButton();
     private JFormattedTextField ConsultarVendaDataFinal = new JFormattedTextField();
@@ -46,6 +57,9 @@ public class TelaConsultarVenda extends JDialog {
 	
 	ControleVenda controleVenda = Main.controleVenda;
 
+    /**
+     * Construtor padrão da classe, contém todo o desenho do frontend do projeto relacionado a consulta de {@link Venda}
+     */
     public TelaConsultarVenda(Frame parent, boolean modal) {
         super(parent, modal);
    
@@ -73,7 +87,7 @@ public class TelaConsultarVenda extends JDialog {
         ConsultarVendaBtnPesquisar.setText("Pesquisar");
         ConsultarVendaBtnPesquisar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                ConsultarVendaBtnPesquisarActionPerformed(evt);
+                ConsultarVendaBtnPesquisarClique(evt);
             }
         });
 
@@ -168,10 +182,13 @@ public class TelaConsultarVenda extends JDialog {
         c.add(Calendar.YEAR, -1);
         Date dataUmAnoAtras = c.getTime();
         ConsultarVendaDataInicial.setText(sdf.format(dataUmAnoAtras));
-        ConsultarVendaBtnPesquisarActionPerformed(null);
+        ConsultarVendaBtnPesquisarClique(null);
     }                      
 
-    private void ConsultarVendaBtnPesquisarActionPerformed(ActionEvent evt) {                                                            
+    /**
+     * Botão responsável por pesquisar todas vendas no {@link ControleVenda} no intervalo fornecido.
+     */
+    public void ConsultarVendaBtnPesquisarClique(ActionEvent evt) {                                                            
         try {        	
         	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         	Date dataInicial = formato.parse(ConsultarVendaDataInicial.getText());
@@ -214,6 +231,5 @@ public class TelaConsultarVenda extends JDialog {
 
         }
     }  
-                 
-                     
+             
 }

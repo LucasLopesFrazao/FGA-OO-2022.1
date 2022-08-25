@@ -1,9 +1,12 @@
-/**
- * Classe utilizada no controleVendedor, é apenas uma model de um vendedor.
- * @version 1.0.0
- */
-
 package modelo;
+
+/**
+ * Classe utilizada no controleVendedor, é apenas uma classe para modelar um vendedor.
+ *
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 
 public class Vendedor extends PessoaAbstrata{
 	

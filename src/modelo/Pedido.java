@@ -1,8 +1,18 @@
-/**
- * Classe utilizada para complementar a classe Venda e Produto, é apenas uma model que tem vários produtos e é usada pelo ControleVenda.
- * @version 1.0.0
- */
 package modelo;
+
+/**
+ * Classe utilizada para ligar a classe Venda com a classe Produto.
+ * 
+ * <p>
+ * Um pedido contém vários produtos e uma venda possui um pedido.
+ * </p>
+ * 
+ * @see Produto
+ * @see Venda
+ * @version 1.0
+ * @since 1.0
+ * @author Lucas L. Frazão - 211031771
+ */
 
 public class Pedido {
 
@@ -10,6 +20,7 @@ public class Pedido {
 	private Produto produto;
 	private Integer quantidade;
 	private Double  precoTotal;
+	private Double precoAnterior;
 	
 	//CONSTRUTORES
 	public Pedido() {
@@ -20,6 +31,13 @@ public class Pedido {
 		this.produto = produto;
 		this.quantidade = quantidade;
 		this.precoTotal = precoTotal;
+	}
+
+	public Pedido(Produto produto, Integer quantidade, Double precoTotal, Double precoAnterior) {
+		this.produto = produto;
+		this.quantidade = quantidade;
+		this.precoTotal = precoTotal;
+		this.precoAnterior = precoAnterior;
 	}
 
 	//GETTERS E SETTERS
@@ -46,14 +64,21 @@ public class Pedido {
 	public void setPrecoTotal(Double precoTotal) {
 		this.precoTotal = precoTotal;
 	}
-	
+
 	public void subtotal() {
-		// TODO
 		this.precoTotal = produto.getPreco() * quantidade;
 	}
 	
 	public void adicionarProduto(Produto produto) {
 		setProduto(produto);
+	}
+	
+	public Double getPrecoAnterior() {
+		return precoAnterior;
+	}
+
+	public void setPrecoAnterior(Double precoAnterior) {
+		this.precoAnterior = precoAnterior;
 	}
 
 	@Override
