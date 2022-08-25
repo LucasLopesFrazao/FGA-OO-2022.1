@@ -7,9 +7,7 @@ import controle.ControleVendedor;
 import view.TelaPrincipal;
 
 /**
- * Classe principal do programa, responsável por iniciar a main da view principal e 
- * também iniciar uma instanciação de cada controle para existir apenas 1 "Banco de dados"
- * para cada controle.
+ * Classe principal do programa, responsável por iniciar a main da view principal e também iniciar uma instanciação de cada controle para existir apenas 1 "Banco de dados" para cada controle.
  * 
  * @see ControleProduto
  * @see ControleCliente
