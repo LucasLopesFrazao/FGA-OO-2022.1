@@ -443,7 +443,7 @@ public class TelaRealizarVenda extends JDialog {
      */
     public void RealizarVendaBtnPesquisarProdutoClique(ActionEvent evento) {     
     	try {
-    		Produto p = controleProduto.pesquisarProdutoId(Integer.parseInt(RealizarVendaInputCodProduto.getText())); // PESQUISANDO PRODUTO POR ID NO BANCO DE DADOS
+    		Produto p = controleProduto.pesquisarProduto(Integer.parseInt(RealizarVendaInputCodProduto.getText())); // PESQUISANDO PRODUTO POR ID NO BANCO DE DADOS
     		controleProduto.checarIdNoSistema(Integer.parseInt(RealizarVendaInputCodProduto.getText())); // CHECANDO SE INPUT DIGITADO EXISTE NO BANCO DE DADOS
     		RealizarVendaInputNomeProduto.setText(p.getNome()); // SETANDO INPUT
     		RealizarVendaInputPrecoProduto.setText(String.format("%.2f", p.getPreco())); // SETANDO INPUT

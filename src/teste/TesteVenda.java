@@ -29,9 +29,9 @@ class TesteVenda {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			List<Pedido> pedidosVenda = new ArrayList<>();
-			pedidosVenda.add(new Pedido(controleProduto.pesquisarProdutoId(1), 1, controleProduto.pesquisarProdutoId(1).getPreco()*1));
-			pedidosVenda.add(new Pedido(controleProduto.pesquisarProdutoId(11), 1, controleProduto.pesquisarProdutoId(11).getPreco()*1));
-			pedidosVenda.add(new Pedido(controleProduto.pesquisarProdutoId(19), 2, controleProduto.pesquisarProdutoId(19).getPreco()*2));
+			pedidosVenda.add(new Pedido(controleProduto.pesquisarProduto(1), 1, controleProduto.pesquisarProduto(1).getPreco()*1));
+			pedidosVenda.add(new Pedido(controleProduto.pesquisarProduto(11), 1, controleProduto.pesquisarProduto(11).getPreco()*1));
+			pedidosVenda.add(new Pedido(controleProduto.pesquisarProduto(19), 2, controleProduto.pesquisarProduto(19).getPreco()*2));
 			controleVenda.adicionarVenda(new Venda(11, sdf.parse("18/05/2022"), 11789.96, controleVendedor.pesquisarPorNome("Raf"), controleCliente.pesquisarClientePorCPF("264.162.494-05"), pedidosVenda));
 		} catch (ParseException e) {
 

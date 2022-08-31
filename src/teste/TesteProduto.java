@@ -34,14 +34,14 @@ class TesteProduto {
 	@Test
 	void diminuirEstoqueProduto() throws EstoqueException {
 		controleProduto.diminuirEstoque(6, 4);
-		Integer estoque = controleProduto.pesquisarProdutoId(6).getQtdEstoque();
+		Integer estoque = controleProduto.pesquisarProduto(6).getQtdEstoque();
 		assertEquals(1, estoque);
 	}
 	
 	@Test
 	void aumentarEstoqueProduto() throws EstoqueException {
 		controleProduto.aumentarEstoque(6, 5);
-		Integer estoque = controleProduto.pesquisarProdutoId(6).getQtdEstoque();
+		Integer estoque = controleProduto.pesquisarProduto(6).getQtdEstoque();
 		assertEquals(10, estoque);
 	}
 	

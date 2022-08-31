@@ -141,7 +141,7 @@ public class ControleProduto {
 	 * @return Retorna um Produto.
 	 * @see Produto
 	 */
-	public Produto pesquisarProdutoId(Integer id) {
+	public Produto pesquisarProduto(Integer id) {
 		for(Produto p: produtos) {
 			if(p.getId() == id) {
 				return p;
