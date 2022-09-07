@@ -1,10 +1,9 @@
 package application;
 
-import controle.ControleVenda;
 import controle.ControleCliente;
 import controle.ControleProduto;
+import controle.ControleVenda;
 import controle.ControleVendedor;
-import view.TelaPrincipal;
 
 /**
  * Classe principal do programa, responsável por iniciar a main da view principal e também iniciar uma instanciação de cada controle para existir apenas 1 "Banco de dados" para cada controle.
@@ -17,12 +16,7 @@ import view.TelaPrincipal;
  * @since 1.0
  * @author Lucas L. Frazão - 211031771
  */
-public class Main {
-
-	public static void main(String[] args) {
-		TelaPrincipal.main(args); // INICIANDO TELA PRINCIPAL
-	}
-	
+public class Main {	
 	// INSTANCIAÇÕES DOS BANCOS DE DADOS
 	public static ControleCliente controleCliente = new ControleCliente();
 	public static ControleVendedor controleVendedor = new ControleVendedor();

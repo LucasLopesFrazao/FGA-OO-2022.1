@@ -7,9 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import modelo.Cliente;
+import view.TelaCliente;
 
 /**
- * A classe <b>ControleCliente</b> define uma relação com a classe Cliente (model) com a TelaCliente (view). 
+ * A classe <b>ControleCliente</b> define uma relação com a classe {@link Cliente} (model) com a {@link TelaCliente} (view). 
  * 
  * <p>
  * Essa classe é responsável por gerenciar a lista de cliente junto com os métodos necessários.

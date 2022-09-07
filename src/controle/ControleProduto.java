@@ -6,9 +6,10 @@ import java.util.List;
 import exceptions.EstoqueException;
 import exceptions.IdProdutoException;
 import modelo.Produto;
+import view.TelaProduto;
 
 /**
- * A classe <b>ControleProduto</b> define uma relação com a classe Produto (model) com a TelaProduto (view). 
+ * A classe <b>ControleProduto</b> define uma relação com a classe {@link Produto} (model) com a {@link TelaProduto} (view). 
  * 
  * <p>
  * Essa classe é responsável por gerenciar a lista de produto junto com os métodos necessários

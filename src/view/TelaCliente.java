@@ -98,9 +98,6 @@ public class TelaCliente extends JDialog {
         // ATUALIZANDO O INPUT DO COD PARA O PROXIMO A SER CADASTRADO 
         controleClienteInputCod.setText(String.valueOf(controleCliente.ultimoCodigoCadastrado() + 1));
         
-        // COLOCANDO VALOR PADRÃO NO DROPBOX
-        controleClienteInputUF.setText("DF");
-        
         // O QUE FAZER QUANDO FECHAR, TITULO E LOCALIZAÇÃO
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Controle de clientes");
@@ -440,6 +437,9 @@ public class TelaCliente extends JDialog {
         
         //CHAMANDO BOTÃO DE LISTAR TODOS
         controleClienteBtnListarTodosClique(null);
+        
+        // COLOCANDO VALOR PADRÃO NO DROPBOX
+        controleClienteInputUF.setText("DF");
     }                 
     
     /**
@@ -456,7 +456,8 @@ public class TelaCliente extends JDialog {
     	controleClienteInputEndereco.setText("");
     	controleClienteInputNumero.setText("");
     	controleClienteInputBairro.setText("");
-    	controleClienteInputUF.setText("");
+    	controleClienteInputUF.setText("DF");
+    	
     }      
     
     /**
@@ -569,7 +570,7 @@ public class TelaCliente extends JDialog {
     		controleClienteInputEndereco.setText("");
     		controleClienteInputNumero.setText("");
     		controleClienteInputBairro.setText("");
-    		controleClienteInputUF.setText("");
+    		controleClienteInputUF.setText("DF");
     		
     		// ADICIONANDO PROXIMO ID A SER CADASTRADO NO INPUT CODIGO
     		controleClienteInputCod.setText(String.valueOf(controleCliente.ultimoCodigoCadastrado() + 1));
@@ -591,7 +592,7 @@ public class TelaCliente extends JDialog {
 	    		controleClienteInputEndereco.setText("");
 	    		controleClienteInputNumero.setText("");
 	    		controleClienteInputBairro.setText("");
-	    		controleClienteInputUF.setText("");
+	    		controleClienteInputUF.setText("DF");
 	    		
 	    		// ADICIONANDO PROXIMO ID A SER CADASTRADO NO INPUT CODIGO
 	    		controleClienteInputCod.setText(String.valueOf(controleCliente.ultimoCodigoCadastrado() + 1));

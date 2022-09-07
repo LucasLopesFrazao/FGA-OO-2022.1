@@ -7,11 +7,14 @@ import java.util.Date;
 import java.util.List;
 
 import application.Main;
+import modelo.Cliente;
 import modelo.Pedido;
+import modelo.Produto;
 import modelo.Venda;
+import modelo.Vendedor;
 
 /**
- * A classe <b>ControleVenda</b> define uma relação com a classe Produto, Cliente, Vendedor e Venda (models) com a TelaVenda (view). 
+ * A classe <b>ControleVenda</b> define uma relação com a classe {@link Produto}, {@link Cliente}, {@link Vendedor} e {@link Venda} (models) com as telas de vendas.
  * 
  * <p>
  * Essa classe é responsável por gerenciar a lista de venda junto com os métodos necessários
